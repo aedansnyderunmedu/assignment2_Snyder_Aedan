@@ -6,5 +6,6 @@ double stdev_Array(const int *array, int n); //Const for never changing array va
 int sum_Array(const int *array, int n); //
 int max_Array(const int *array, int n); //
 int min_Array(const int *array, int n); //
+int abs_Array(int max, int min);
 
 #endif //close header
