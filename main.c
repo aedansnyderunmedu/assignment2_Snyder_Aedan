@@ -1,31 +1,32 @@
 #include <stdio.h>
 
+
+void insideError(void)
+{
+	printf("Invalid entry; use integers only for this step.\n");//error printer for repetitive errors
+}
+
+void outsideError(void)
+{
+	printf("Invalid entry; choose a positive integer <= 500 for this step.\n");
+}
+
+int fill_Array(int *array, int n) //array fill function, takes n for size/loop and returns success or fail code
+{
+	printf("Please enter values for specified table:\n");
+	for(int i = 0; i < n; i++)
+	{
+		if(scanf("%d", &array[i]) != 1)
+		{
+			insideError();
+			return 1;
+		}
+	}
+	return 0;
+}
+
 int main()
 {
-	void insideError(void)
-	{
-		printf("Invalid entry; use integers only for this step.\n");//error printer for repetitive errors
-	}
-
-	void outsideError(void)
-	{
-		printf("Invalid entry; choose a positive integer <= 500 for this step.\n");
-	}
-	
-	int fill_Array(int *array, int n) //array fill function, takes n for size/loop and returns success or fail code
-	{
-		printf("Please enter values for specified table:\n");
-		for(int i = 0; i < n; i++)
-		{
-			if(scanf("%d", &array[i]) != 1)
-			{
-				insideError();
-				return 1;
-			}
-		}
-		return 0;
-	}
-	
 	int n_Max = 500;
 	int n;//array 1 parameter; user input.
 	
@@ -36,6 +37,7 @@ int main()
 		return 1; //rejection/exit
 	}
 	int table1[n];
+		int n1 = n;
 	fill_Array(table1, n);
 
 	printf("Please enter size of table 2:\n");
@@ -45,6 +47,7 @@ int main()
 		return 1;
 	}
 	int table2[n];
+		int n2 = n;
 	fill_Array(table2, n);
 
 	printf("Please enter size of table 3:\n");
@@ -54,7 +57,10 @@ int main()
 		return 1;
 	}
 	int table3[n];
+		int n3 = n;
 	fill_Array(table3, n);
+	
+	printf("Table 1 metrics:\nSum: %d\nAverage: %lf\nStandard Deviation (sample): %lf\n", sum_Array(table1, n1), avg_Array(table1, n1), stdev_Array(table1, n1));
 
 	return 0;
 }
