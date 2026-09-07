@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "statistics.h"
 
 void insideError(void)
 {

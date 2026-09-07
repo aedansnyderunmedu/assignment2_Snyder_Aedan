@@ -1,7 +1,7 @@
 #include <math.h>
 #include "statistics.h" //quotes to specify THIS directory. stats.h is my custom header, not included in the main c toolchain. 
 
-double stdev_Array(*array, n)
+double stdev_Array(const int *array, int n)
 {
 	double mean = avg_Array(array, n);
 	double squareSum = 0;
@@ -10,10 +10,10 @@ double stdev_Array(*array, n)
 		double meanDiff = array[i] - mean;
 		squareSum += meanDiff * meanDiff;
 	}
-	return sqrt(squareSum/(size - 1));
+	return sqrt(squareSum/(n - 1));
 }
 
-double avg_Array(*array, n)
+double avg_Array(const int *array, int n)
 {
 	int countSum = 0;
 	double avg;
@@ -21,11 +21,11 @@ double avg_Array(*array, n)
 	{
 		countSum += array[i];
 	}
-	avg = countSum/(double)size;
+	avg = countSum/(double)n;
 	return avg;
 }
 
-int sum_Array(*array, n)
+int sum_Array(const int *array, int n)
 {
 	int countSum = 0;
 	for(int i = 0; i < n; i++)
